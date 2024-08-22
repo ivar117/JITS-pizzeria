@@ -40,11 +40,20 @@ class TestWebsite(TestCase):
         self.browser.get('about:blank')  # load a blank page to avoid previous tests affecting subsequent tests
 
     # THE TESTS START HERE
-    def testPageText(self):
+    def testTitle(self):
         self.assertIn("Il Forno Magico", self.browser.page_source)
 
-    def testPageNumber(self):
+    def testTelephone(self):
         self.assertIn("0630-555-555", self.browser.page_source)
+
+    def testOpeningHours(self):
+        self.assertIn("Öppettider", self.browser.page_source)
+
+    def testAddress(self):
+        self.assertIn("Adress", self.browser.page_source)
+    
+    def testContact(self):
+        self.assertIn("Kontakt", self.browser.page_source)
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page
         self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")

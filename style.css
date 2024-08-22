@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 .welcome-center p {
@@ -15,3 +16,31 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #222;
+    color: #eee;
+    text-align: center;
+    padding: 5vh 5vw;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer-info {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+}
+
+@media (max-width: 720px) {
+    #footer-info {
+        flex-direction: column;
+    }
+    .footer-content {
+        margin: 2.5vh 0;
+    }
+}
+
