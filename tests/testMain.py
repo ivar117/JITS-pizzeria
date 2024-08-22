@@ -2,14 +2,15 @@ from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from os import path, getcwd
+from datetime import datetime
 
 
 
 class TestWebsite(TestCase):
 
     # settings for how the tests will be executed
-    do_not_close_browser = True  # if True, the browser will stay open after the tests are done, otherwise it will close
-    hide_window = False  # if True, the browser will not be shown while the tests are executed
+    do_not_close_browser = False  # if True, the browser will stay open after the tests are done, otherwise it will close
+    hide_window = True  # if True, the browser will not be shown while the tests are executed
 
     # setUpClass is executed BEFORE THE FIRST test
     @classmethod
@@ -45,7 +46,8 @@ class TestWebsite(TestCase):
     def testPageNumber(self):
         self.assertIn("0630-555-555", self.browser.page_source)
 
-
+    def testCaptureScreenshot(self): # generates a screenshot of the start page
+        self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
