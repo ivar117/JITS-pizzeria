@@ -55,9 +55,13 @@ class TestWebsite(TestCase):
     def testContact(self):
         self.assertIn("Kontakt", self.browser.page_source)
 
-    def testCaptureScreenshot(self): # generates a screenshot of the start page
-        self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
+        test_screenshot_res(self, 1920, 1080)
+        test_screenshot_res(self, 2560, 1440)
 
+def test_screenshot_res(self, width, height):
+    self.browser.set_window_size(width, height)
+    self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
