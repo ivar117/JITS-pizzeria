@@ -37,7 +37,7 @@ class TestHemsida(TestCase):
     def tearDown(self):
         self.browser.get('about:blank')  # gå till en tom sida för att undvika att tidigare test påverkar senare
 
-
+#ändrinf
     # HÄR BÖRJAR TESTERNA
     def testPageText(self):
         self.browser.get(path.join(path.dirname(getcwd()), "JITS-pizzeria", 'index.html'))
