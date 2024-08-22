@@ -5,13 +5,13 @@
 
 .welcome-center p {
     font-weight: bold;
-    font-size: 2.5vw;
+    font-size: 5vh;
     text-align: center;
     line-height: 1.5;
 }
 
 .welcome-center {
-    margin-top: 3vw;
+    margin-top: 3vh;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
@@ -33,11 +33,11 @@ footer {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 1vh;
-    font-size: 0.7vw;
+    font-size: 1.5vh;
 }
 
 #footer-credit {
-    font-size: 0.7vw;
+    font-size: 1.5vh;
 }
 
 @media (max-width: 720px) {
