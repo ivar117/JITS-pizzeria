@@ -40,10 +40,10 @@ class TestWebsite(TestCase):
 
     # THE TESTS START HERE
     def testPageText(self):
-        self.assertIn("Välkommen", self.browser.page_source)
+        self.assertIn("Il Forno Magico", self.browser.page_source)
 
     def testPageNumber(self):
-        self.assertIn("018-123456", self.browser.page_source)
+        self.assertIn("0630-555-555", self.browser.page_source)
 
 
 
