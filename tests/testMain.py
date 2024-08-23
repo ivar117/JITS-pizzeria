@@ -1,6 +1,9 @@
 from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import os
 from datetime import datetime
 
@@ -54,6 +57,37 @@ class TestWebsite(TestCase):
     
     def testContact(self):
         self.assertIn("Kontakt", self.browser.page_source)
+
+    def testCaptureScreenshot(self): # generates a screenshot of the start page
+        self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+
+    def testContactLinks(self):
+        contact_links = {
+            "email": "mailto:info@ilfornomagico.se",
+            "phone": "tel:0630-555-555",
+        }
+
+        for contact_type, expected_url in contact_links.items():
+            link_element = self.browser.find_element(By.ID, contact_type)
+            href = link_element.get_attribute('href')
+            self.assertEqual(href, expected_url, f"{contact_type} link is incorrect.")
+
+    def testSocialMediaLinks(self):
+        social_links = {
+            "facebook": "https://facebook.com/ntiuppsala",
+            "instagram": "https://instagram.com/ntiuppsala",
+            "twitter": "https://twitter.com/ntiuppsala"
+        }
+
+        for platform, expected_url in social_links.items():
+            link_element = self.browser.find_element(By.ID, platform)
+            link_element = WebDriverWait(self.browser, 10).until(
+                EC.presence_of_element_located((By.ID, platform))
+            )
+            href = link_element.get_attribute('href')
+            
+            # Test if the href matches the expected URL
+            self.assertEqual(href, expected_url, f"{platform} link is incorrect.")
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
 

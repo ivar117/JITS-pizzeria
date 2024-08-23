@@ -1,6 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 :root {
@@ -30,18 +31,38 @@ footer {
     background-color: #222;
     color: #eee;
     text-align: center;
-    padding: 1vh 1vw;
+    padding: 5vh 3vw;
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 10vh
 }
 
 
 #footer-info {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 1vh;
+    margin-bottom: 3vh;
     font-size: var(--footer-font-size);
+}
+
+#footer-info a {
+    color: white;
+}
+
+#social-media-container {
+   display: flex; 
+   flex-direction: row;
+   margin-right: auto;
+   margin-left: auto;
+   color: white;
+   margin-top: 3vh
+}
+
+#social-media-container img { 
+    filter: invert(1);
+    margin-inline: 15px;
+    width: 50%;
 }
 
 #footer-credit {
@@ -66,3 +87,9 @@ footer {
     }
 }
 
+@media (max-width: 450px) {
+    #social-media-container img { 
+        margin-inline: 5px;
+        width: 60%;
+    }
+}
