@@ -56,12 +56,23 @@ class TestWebsite(TestCase):
         self.assertIn("Kontakt", self.browser.page_source)
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
-        test_screenshot_res(self, 1920, 1080)
-        test_screenshot_res(self, 2560, 1440)
+        test_screenshot_res(self, 1920, 1080, "1080p")
+        test_screenshot_res(self, 2560, 1440, "1440p")
 
-def test_screenshot_res(self, width, height):
+        # tests for checking phone resolution
+        test_screenshot_res(self, 375, 667, "iPhone-SE") # iPhone SE
+        test_screenshot_res(self, 414, 896, "iPhone-XR") # iPhone XR
+        test_screenshot_res(self, 390, 844, "iPhone-12-Pro") # iPhone 12 Pro
+        test_screenshot_res(self, 430, 932, "iPhone-14-Pro-Max") # iPhone 14 Pro Max
+        test_screenshot_res(self, 412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
+        test_screenshot_res(self, 360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
+
+
+    # def testCaptureScreenshotPhone(self):
+
+def test_screenshot_res(self, width, height, res_name):
     self.browser.set_window_size(width, height)
-    self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    self.browser.save_screenshot("testScreenshots/" + res_name + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
