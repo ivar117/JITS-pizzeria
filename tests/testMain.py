@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from os import path, getcwd
+import os
 from datetime import datetime
 
 
@@ -33,7 +33,7 @@ class TestWebsite(TestCase):
 
     # setUp is executed BEFORE EVERY TEST
     def setUp(self):
-        self.browser.get(path.join(path.dirname(getcwd()), "JITS-pizzeria", 'index.html'))
+        self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
 
     # tearDown is executed AFTER EVERY TEST
     def tearDown(self):
@@ -56,6 +56,9 @@ class TestWebsite(TestCase):
         self.assertIn("Kontakt", self.browser.page_source)
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
+
+        os.path.isdir("testScreenshots") or os.mkdir("testScreenshots") # create a folder for the screenshots if it doesn't exist
+
         test_screenshot_res(self, 1920, 1080, "1080p")
         test_screenshot_res(self, 2560, 1440, "1440p")
 
@@ -66,13 +69,15 @@ class TestWebsite(TestCase):
         test_screenshot_res(self, 430, 932, "iPhone-14-Pro-Max") # iPhone 14 Pro Max
         test_screenshot_res(self, 412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
         test_screenshot_res(self, 360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
-
-
-    # def testCaptureScreenshotPhone(self):
+        
+    
 
 def test_screenshot_res(self, width, height, res_name):
-    self.browser.set_window_size(width, height)
-    self.browser.save_screenshot("testScreenshots/" + res_name + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    
+    self.browser.set_window_size(width, height) # set the window size to the desired resolution
+
+    # save screenshot with the resolution in the filename
+    self.browser.save_screenshot("testScreenshots/" + res_name + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
