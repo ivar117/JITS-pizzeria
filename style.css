@@ -19,7 +19,6 @@ body {
     background-repeat: no-repeat;
     background-position: center top;
     background-size: contain;
-    background-size: 100% auto;
     background-attachment: fixed;
 }
 
@@ -105,13 +104,21 @@ a.social-link:hover {
     opacity: 0.5;
 }
 
+@media screen and (orientation:portrait) {
+    body {
+        background-size: auto 125%;
+    }
+}
+@media screen and (orientation:landscape) {
+    body {
+        background-size: 125% auto;
+    }
+}
+
 @media (max-width: 430px) { /* Phone screen customization */
     :root {
         --footer-font-size: 0.5cm;
         --title-font-size: 7vw;
-    }
-    body {
-        background-size: auto 100%;
     }
     #footer-info {
         flex-direction: column;
