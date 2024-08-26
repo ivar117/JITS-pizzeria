@@ -104,7 +104,12 @@ class TestWebsite(TestCase):
         test_screenshot_res(self, 412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
         test_screenshot_res(self, 360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
         
-    
+    def testBackgroundImage(self):
+        bdy = self.browser.find_element(By.TAG_NAME, 'body') # stores "body"-element in variable
+
+        bdy_bg_path = bdy.value_of_css_property("background-image").split("///")[1].split("\"")[0].replace("%20", " ") # finds the name of the "background-image"-property of "body"
+        
+        assert os.path.exists(bdy_bg_path) == True # check that background image of "body" exists
 
 def test_screenshot_res(self, width, height, res_name):
     
