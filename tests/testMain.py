@@ -4,16 +4,17 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 import os
 from datetime import datetime
-
+import time
 
 
 class TestWebsite(TestCase):
 
     # settings for how the tests will be executed
-    do_not_close_browser = False  # if True, the browser will stay open after the tests are done, otherwise it will close
-    hide_window = True  # if True, the browser will not be shown while the tests are executed
+    do_not_close_browser = False # if True, the browser will stay open after the tests are done, otherwise it will close
+    hide_window = True # if True, the browser will not be shown while the tests are executed
 
     # setUpClass is executed BEFORE THE FIRST test
     @classmethod
@@ -61,7 +62,7 @@ class TestWebsite(TestCase):
     def testCaptureScreenshot(self): # generates a screenshot of the start page
         self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
-    def testContactLinks(self):
+    def testContactLinks(self): 
         contact_links = {
             "email": "mailto:info@ilfornomagico.se",
             "phone": "tel:0630-555-555",
@@ -72,7 +73,7 @@ class TestWebsite(TestCase):
             href = link_element.get_attribute('href')
             self.assertEqual(href, expected_url, f"{contact_type} link is incorrect.")
 
-    def testSocialMediaLinks(self):
+    def testSocialMediaLinks(self): 
         social_links = {
             "facebook": "https://facebook.com/ntiuppsala",
             "instagram": "https://instagram.com/ntiuppsala",
@@ -116,7 +117,14 @@ def test_screenshot_res(self, width, height, res_name):
     self.browser.set_window_size(width, height) # set the window size to the desired resolution
 
     # save screenshot with the resolution in the filename
-    self.browser.save_screenshot("testScreenshots/" + res_name + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    self.browser.save_screenshot("testScreenshots/" + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+
+    html = self.browser.find_element(By.TAG_NAME, 'html') # scroll to bottom
+    html.send_keys(Keys.END)
+
+    time.sleep(0.1) # sleep for .1 seconds so the browser has time to scroll down before taking screen shot
+
+    self.browser.save_screenshot("testScreenshots/" + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
