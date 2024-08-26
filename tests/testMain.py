@@ -67,9 +67,14 @@ class TestWebsite(TestCase):
             "phone": "tel:0630-555-555",
         }
 
-        for contact_type, expected_url in contact_links.items():
-            link_element = self.browser.find_element(By.ID, contact_type)
-            href = link_element.get_attribute('href')
+        for contact_type, expected_url in contact_links.items(): # iterate over the contact links 
+            link_element = self.browser.find_element(By.ID, contact_type) # find the element with the id of "contact_type"
+            link_element = WebDriverWait(self.browser, 10).until(  # wait for the element to be present in the DOM
+                EC.presence_of_element_located((By.ID, contact_type))
+            )
+            href = link_element.get_attribute('href') # get the href attribute of the element
+
+            # test if the href matches the expected URL
             self.assertEqual(href, expected_url, f"{contact_type} link is incorrect.")
 
     def testSocialMediaLinks(self):
@@ -80,13 +85,13 @@ class TestWebsite(TestCase):
         }
 
         for platform, expected_url in social_links.items():
-            link_element = self.browser.find_element(By.ID, platform)
-            link_element = WebDriverWait(self.browser, 10).until(
+            link_element = self.browser.find_element(By.ID, platform) # find the element with the id of "platform"
+            link_element = WebDriverWait(self.browser, 10).until(  # wait for the element to be present in the DOM
                 EC.presence_of_element_located((By.ID, platform))
             )
-            href = link_element.get_attribute('href')
+            href = link_element.get_attribute('href') # get the href attribute of the element
             
-            # Test if the href matches the expected URL
+            # test if the href matches the expected URL
             self.assertEqual(href, expected_url, f"{platform} link is incorrect.")
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
