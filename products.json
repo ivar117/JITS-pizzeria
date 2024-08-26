@@ -1,0 +1,50 @@
+[
+	{
+		"id": 1,
+		"name": "Margarita",
+		"desc": "ost",
+		"price": 80
+	},
+	{
+		"id": 2,
+		"name": "Hawaii",
+		"desc": "skinka, ananas",
+		"price": 90
+	},
+	{
+		"id": 3,
+		"name": "Calzone",
+		"desc": "inbakad, skinka",
+		"price": 85
+	},
+	{
+		"id": 4,
+		"name": "Capricciosa",
+		"desc": "skinka, championer",
+		"price": 90
+	},
+	{
+		"id": 5,
+		"name": "Vesuvio",
+		"desc": "skinka",
+		"price": 85
+	},
+	{
+		"id": 6,
+		"name": "La Casa",
+		"desc": "championer, räkor, skinka",
+		"price": 95
+	},
+	{
+		"id": 7,
+		"name": "Pompei",
+		"desc": "bacon, rödlök, ägg, currie",
+		"price": 90
+	},
+	{
+		"id": 8,
+		"name": "Extra topping",
+		"desc": "",
+		"price": 5
+	}
+]
