@@ -17,68 +17,16 @@
 .bubble {
     background: rgba(230, 203, 170, 0.8);
     border-radius: 25px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
 }
 
 #section-1 {
-    /* display: flex; */
-    /* position: relative; */
     width: 100%;
 }
 
 body {
     font-family: "NewCaledonia";
 }
-
-/* .content {
-    margin-top: 3vh;
-    background: rgba(230, 203, 170, 0.8); */
-
-/* #section-2 {
-    position: relative;
-} */
-
-/* START of code copied from https://www.shapedivider.app/ */
-/* .custom-shape-divider-bottom-1724752704 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.custom-shape-divider-bottom-1724752704 svg {
-    position: relative;
-    display: block;
-    width: calc(150% + 1.3px);
-    height: 230px;
-}
-
-.custom-shape-divider-bottom-1724752704 .shape-fill {
-    fill: #E6A164;
-} */
-/* -------------------------------------------- */
-/* .custom-shape-divider-top-1724752760 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-top-1724752760 svg {
-    position: relative;
-    display: block;
-    width: calc(150% + 1.3px);
-    height: 230px;
-}
-
-.custom-shape-divider-top-1724752760 .shape-fill {
-    fill: #E6A164;
-} */
-/* END of code copied from https://www.shapedivider.app/ */
 
 .background {
     width: 100%;
@@ -95,8 +43,6 @@ body {
     padding: calc(var(--title-font-size)/4) calc(var(--title-font-size)/2);
     margin-left: auto;
     margin-right: auto;
-    border-radius: 25px;
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
 
 }
 
