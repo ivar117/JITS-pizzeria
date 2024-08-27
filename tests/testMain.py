@@ -58,10 +58,7 @@ class TestWebsite(TestCase):
     
     def testContact(self):
         self.assertIn("Kontakt", self.browser.page_source)
-
-    def testCaptureScreenshot(self): # generates a screenshot of the start page
-        self.browser.save_screenshot(datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
-
+        
     def testContactLinks(self): 
         contact_links = {
             "email": "mailto:info@ilfornomagico.se",
