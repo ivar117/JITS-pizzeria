@@ -1,3 +1,5 @@
 .vscode/
 __pycache__/
-testScreenshots/*
+testScreenshots/
+node_modules/
+package-lock.json
