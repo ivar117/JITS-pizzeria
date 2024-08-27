@@ -6,10 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+# from http import * # import the http module to be able to use the http.server class
 import os
 from datetime import datetime
 import time
-
 
 class TestWebsite(TestCase):
 
@@ -39,6 +39,7 @@ class TestWebsite(TestCase):
     # setUp is executed BEFORE EVERY TEST
     def setUp(self):
         self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
+        # self.browser.get("http://localhost:5501/index.html") # load the website
 
     # tearDown is executed AFTER EVERY TEST
     def tearDown(self):
@@ -59,11 +60,7 @@ class TestWebsite(TestCase):
     
     def testContact(self):
         self.assertIn("Kontakt", self.browser.page_source)
-<<<<<<< Updated upstream
-        
-=======
 
->>>>>>> Stashed changes
     def testContactLinks(self): 
         contact_links = {
             "email": "mailto:info@ilfornomagico.se",
@@ -124,7 +121,7 @@ class TestWebsite(TestCase):
 def test_screenshot_res(self, width, height, res_name):
     
     self.browser.set_window_size(width, height) # set the window size to the desired resolution
-
+    print(width, height)
     html = self.browser.find_element(By.TAG_NAME, 'html') # prepare for scroll
 
     scroll(self, html, "top") # scroll to top
@@ -142,6 +139,8 @@ def test_screenshot_res(self, width, height, res_name):
     for img in bg_images: # iterate over the background images and take a screenshot of each
         scroll(self, html, img)
 
+        print("scrolling with res", res_name)
+
         self.browser.save_screenshot("testScreenshots/" + res_name + " img " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 def scroll(self, element, target):
@@ -152,11 +151,11 @@ def scroll(self, element, target):
         elif target == "bottom":
             element.send_keys(Keys.END) # scroll to bottom
 
+        time.sleep(0.2) # sleep for .2 seconds so the browser has time to scroll before taking screenshot
+
     elif type(target) == webdriver.remote.webelement.WebElement: # if the target is an element, scroll to the element
         actions = ActionChains(self.browser)
         actions.move_to_element(target).perform()
-
-    time.sleep(0.2) # sleep for .2 seconds so the browser has time to scroll before taking screenshot
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
