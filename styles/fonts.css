@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'NewCaledonia';
+    src: url(NewCaledoniaLTStdRg.TTF) format("truetype");
+}
+
+@font-face {
+    font-family: 'Italianno';
+    src: url(Italianno-Regular.ttf) format("truetype");
+}

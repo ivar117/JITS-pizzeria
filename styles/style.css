@@ -15,11 +15,12 @@ html {
 }
 
 body {
-    background-image: url(images/home_page_background_image.jpg);
+    background-image: url(/images/home_page_background_image.jpg);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: contain;
     background-attachment: fixed;
+    font-family: "NewCaledonia";
 }
 
 .content {
@@ -35,17 +36,11 @@ body {
 
 .welcome-center p {
     font-weight: bold;
+    font-style: italic;
     font-size: var(--title-font-size);
     text-align: center;
     line-height: 1.5;
 }
-
-/* .welcome-center {
-    margin-top: 3vh;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-} */
 
 footer {
     display: flex;
