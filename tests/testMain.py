@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 import os
 from datetime import datetime
 import time
@@ -58,7 +59,11 @@ class TestWebsite(TestCase):
     
     def testContact(self):
         self.assertIn("Kontakt", self.browser.page_source)
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
     def testContactLinks(self): 
         contact_links = {
             "email": "mailto:info@ilfornomagico.se",
@@ -107,26 +112,51 @@ class TestWebsite(TestCase):
         test_screenshot_res(self, 412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
         test_screenshot_res(self, 360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
         
-    def testBackgroundImage(self):
-        bdy = self.browser.find_element(By.TAG_NAME, 'body') # stores "body"-element in variable
-
-        bdy_bg_path = bdy.value_of_css_property("background-image").split("///")[1].split("\"")[0].replace("%20", " ") # finds the name of the "background-image"-property of "body"
+    def testBackgroundImages(self):
         
-        assert os.path.exists(bdy_bg_path) == True # check that background image of "body" exists
+        images = self.browser.find_elements(By.TAG_NAME, 'img') # collect all img elements on the page in a list
+
+        for img in images: # iterate over the images
+
+            img_src_path = img.get_attribute("src").split("///")[1].split("\"")[0].replace("%20", " ") # format the path to the image so it can be checked
+            assert os.path.exists(img_src_path) == True # check that the source of the image exists
 
 def test_screenshot_res(self, width, height, res_name):
     
     self.browser.set_window_size(width, height) # set the window size to the desired resolution
 
-    # save screenshot with the resolution in the filename
+    html = self.browser.find_element(By.TAG_NAME, 'html') # prepare for scroll
+
+    scroll(self, html, "top") # scroll to top
+
+    # save screenshot of the top of the page with the resolution in the filename
     self.browser.save_screenshot("testScreenshots/" + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
-    html = self.browser.find_element(By.TAG_NAME, 'html') # scroll to bottom
-    html.send_keys(Keys.END)
+    scroll(self, html, "bottom") # scroll to bottom
 
-    time.sleep(0.1) # sleep for .1 seconds so the browser has time to scroll down before taking screen shot
-
+    # save screenshot of the bottom of the page with the resolution in the filename
     self.browser.save_screenshot("testScreenshots/" + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+
+    bg_images = self.browser.find_elements(By.CLASS_NAME, "background") # collect all elements with the class "background" in a list
+
+    for img in bg_images: # iterate over the background images and take a screenshot of each
+        scroll(self, html, img)
+
+        self.browser.save_screenshot("testScreenshots/" + res_name + " img " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+
+def scroll(self, element, target):
+    if type(target) == str:
+        if target == "top":
+            element.send_keys(Keys.HOME) # scroll to top
+
+        elif target == "bottom":
+            element.send_keys(Keys.END) # scroll to bottom
+
+    elif type(target) == webdriver.remote.webelement.WebElement: # if the target is an element, scroll to the element
+        actions = ActionChains(self.browser)
+        actions.move_to_element(target).perform()
+
+    time.sleep(0.2) # sleep for .2 seconds so the browser has time to scroll before taking screenshot
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
