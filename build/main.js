@@ -12,7 +12,6 @@ function display_products(products) {
     const right_menu_container = menu_items_container.querySelector("#right");
     let direction = 0;
     for (const product of products) {
-        console.log(product);
         const menu_item = document.createElement("div");
         menu_item.classList.add("menu-item");
         menu_item.classList.add("bubble");
