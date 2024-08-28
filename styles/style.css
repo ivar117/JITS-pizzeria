@@ -82,8 +82,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: 10px;
     margin-right: 10px;
     padding: calc(var(--title-font-size)/4) calc(var(--title-font-size)/2);
@@ -168,6 +168,13 @@ a.social-link:hover {
     opacity: 0.5;
 }
 
+/* @media (max-height: 1440px) {
+    .menu-item {
+        height: 115%;
+        font-size: 120%;
+    }
+} */
+
 @media (max-width: 1035px) {
     .menu-item {
         width: 25vw;
@@ -190,6 +197,8 @@ a.social-link:hover {
 @media (max-width: 740px) {
     .menu-item {
         width: 30vw;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
     .menu-items#right {
         margin-top: 50px;
