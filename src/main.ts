@@ -6,10 +6,34 @@ function fetch_products(): void { // Fetches products from the server
         });
 }
 
-function display_products(products: string): void { 
-    const left_menu_container = document.getElementById("left-menu-container");
-    const right_menu_container = document.getElementById("right-menu-container");
-    console.log(products); // Logs products in console
+function display_products(products: string): void {
+    const menu_items_container = document.getElementById("menu-items-container");
+    const left_menu_container = menu_items_container.querySelector("#left");
+    const right_menu_container = menu_items_container.querySelector("#right");
+    let direction: number = 0;
+    for (const product of products) {
+        console.log(product);
+        const menu_item = document.createElement("div");
+        menu_item.classList.add("menu-item");
+        menu_item.classList.add("bubble");
+
+        menu_item.innerHTML = `
+        <div class="top">
+            <span class="name">${product.name}</span>
+            <span class="price">${product.price} kr</span>
+        </div>
+        <div class="bottom">
+            <span class="description">${product.desc}</span>
+        </div>
+        `
+
+        if (direction % 2 == 0) {
+            left_menu_container.appendChild(menu_item);
+        } else {
+            right_menu_container.appendChild(menu_item);
+        }
+        direction++;
+    }
 }
 
 fetch_products();

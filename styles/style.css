@@ -9,41 +9,32 @@
     --title-font-size: 5vh;
 }
 
-/* html {
-    position: relative;
-    min-height: 100%;
-} */
-
 .bubble {
     background: rgba(230, 203, 170, 0.8);
     border-radius: 25px;
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
 }
 
-#section-1 {
-    width: 100%;
-}
-
 body {
     font-family: "NewCaledonia";
 }
 
-.background {
+#background-1 {
     width: 100%;
     height: auto;
 }
 
 .welcome-center {
     position: absolute;
-    top: 30vmin;
-    left: 0;
-    right: 0;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     width: fit-content;
+    height: fit-content;
     padding: calc(var(--title-font-size)/4) calc(var(--title-font-size)/2);
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .welcome-center p {
@@ -52,6 +43,73 @@ body {
     font-size: var(--title-font-size);
     text-align: center;
     line-height: 1.5;
+}
+
+#section-1 {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+#section-2 {
+    display: flex;
+    width:100%;
+    position: relative;
+}
+
+#background-2 {
+    width: 100%;
+    height: auto;
+}
+
+#menu-items-container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    z-index: 1; 
+}
+
+.menu-items#right {
+    margin-top: 80px
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: calc(var(--title-font-size)/4) calc(var(--title-font-size)/2);
+    font-weight: bold;
+    width: 18vw;
+}
+
+.menu-item .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-item .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.menu-item .name {
+    font-family: 'Italianno';
+    font-size: 180%;
+    font-weight: bold;
 }
 
 footer {
@@ -65,7 +123,6 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
 
 #footer-info {
     display: flex;
@@ -111,6 +168,67 @@ a.social-link:hover {
     opacity: 0.5;
 }
 
+@media (max-width: 1035px) {
+    .menu-item {
+        width: 25vw;
+    }
+    .welcome-center p {
+        font-size: 300%;
+    }
+    .welcome-center {
+        width: 80%;
+    }
+}
+
+@media (max-width: 900px) {
+    #menu-items-container {
+        gap: 30px;
+        font-size: 90%;
+    }
+}
+
+@media (max-width: 740px) {
+    .menu-item {
+        width: 30vw;
+    }
+    .menu-items#right {
+        margin-top: 50px;
+    }
+    .welcome-center p {
+        font-size: 250%;
+    }
+    .welcome-center {
+        width: 80%;
+    }
+}
+
+@media (max-width: 620px) {
+    #menu-items-container {
+        font-size: 65%;
+    }
+}
+
+@media (max-width: 500px) {
+    #menu-items-container {
+        font-size: 55%;
+    }
+    .menu-item {
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .menu-items#right {
+        margin-top: 30px;
+    }
+    .welcome-center p {
+        font-size: 200%;
+    }
+    .welcome-center {
+        width: 90%;
+    }
+}
+
 @media (max-width: 430px) { /* Phone screen customization */
     :root {
         --footer-font-size: 0.5cm;
@@ -137,5 +255,34 @@ a.social-link:hover {
     #background-1 {
         width: 200%;
         height: auto;
+    }
+    #menu-items-container {
+        gap: 20px;
+        top: 50%;
+        font-size: 50%
+    }
+    .menu-item {
+        margin-right: 20px;
+        margin-left: 20px;
+        width: 30vw;
+    }
+    .menu-items#right {
+        margin-top: 20px;
+    }
+    .welcome-center p {
+        font-size: 150%;
+    }
+    .welcome-center {
+        width: 80%;
+        left: 45%;
+    }
+}
+@media (max-width: 350px) {
+    .menu-item {
+        width: 35vw;
+    }
+    #menu-items-container {
+        font-size: 45%;
+        gap: 0;
     }
 }

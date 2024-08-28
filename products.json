@@ -1,44 +1,44 @@
 [
 	{
 		"id": 1,
-		"name": "Margarita",
-		"desc": "ost",
+		"name": "Margherita",
+		"desc": "Ost, tomatsås",
 		"price": 80
 	},
 	{
 		"id": 2,
 		"name": "Hawaii",
-		"desc": "skinka, ananas",
+		"desc": "Ost, tomatsås, skinka, ananas",
 		"price": 90
 	},
 	{
 		"id": 3,
 		"name": "Calzone",
-		"desc": "inbakad, skinka",
+		"desc": "Ost, tomatsås, inbakad, skinka",
 		"price": 85
 	},
 	{
 		"id": 4,
 		"name": "Capricciosa",
-		"desc": "skinka, championer",
+		"desc": "Ost, tomatsås, skinka, championer",
 		"price": 90
 	},
 	{
 		"id": 5,
 		"name": "Vesuvio",
-		"desc": "skinka",
+		"desc": "Ost, tomatsås, skinka",
 		"price": 85
 	},
 	{
 		"id": 6,
 		"name": "La Casa",
-		"desc": "championer, räkor, skinka",
+		"desc": "Ost, tomatsås, championer, räkor, skinka",
 		"price": 95
 	},
 	{
 		"id": 7,
 		"name": "Pompei",
-		"desc": "bacon, rödlök, ägg, currie",
+		"desc": "Ost, tomatsås, bacon, rödlök, ägg, currie",
 		"price": 90
 	},
 	{
