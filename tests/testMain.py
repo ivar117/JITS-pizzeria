@@ -74,7 +74,6 @@ class TestWebsite(TestCase):
 
         if os.path.isdir("testScreenshots") != True: # create a folder for the screenshots if it doesn't exist
             os.mkdir("testScreenshots")
-        # os.path.isdir("testScreenshots") or os.mkdir("testScreenshots")
 
         test_screenshot_res(self, 1920, 1080, "1080p")
         test_screenshot_res(self, 2560, 1440, "1440p")
