@@ -72,7 +72,9 @@ class TestWebsite(TestCase):
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
 
-        os.path.isdir("testScreenshots") or os.mkdir("testScreenshots") # create a folder for the screenshots if it doesn't exist
+        if os.path.isdir("testScreenshots") != True: # create a folder for the screenshots if it doesn't exist
+            os.mkdir("testScreenshots")
+        # os.path.isdir("testScreenshots") or os.mkdir("testScreenshots")
 
         test_screenshot_res(self, 1920, 1080, "1080p")
         test_screenshot_res(self, 2560, 1440, "1440p")
