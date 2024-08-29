@@ -85,14 +85,13 @@ class TestWebsite(TestCase):
         test_screenshot_res(self, 412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
         test_screenshot_res(self, 360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
         
-    def testBackgroundImages(self):
-        
+    def testImagesPath(self):
         images = self.browser.find_elements(By.TAG_NAME, 'img') # collect all img elements on the page in a list
 
         for img in images: # iterate over the images
-
-            img_src_path = img.get_attribute("src").split("///")[1].split("\"")[0].replace("%20", " ") # format the path to the image so it can be checked
-            assert os.path.exists(img_src_path) == True # check that the source of the image exists
+            img_src_path = img.get_attribute("src") # get the path source of the image
+            img_src_path = img_src_path[8:] # remove "file:///" from the path, which are the first 8 characters
+            assert os.path.exists(img_src_path) # check that the source of the image exists
 
 def test_screenshot_res(self, width, height, res_name):
     
