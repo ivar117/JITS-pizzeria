@@ -20,7 +20,7 @@
 	{
 		"id": 4,
 		"name": "Capricciosa",
-		"desc": "Ost, tomatsås, skinka, championer",
+		"desc": "Ost, tomatsås, skinka, champinjoner",
 		"price": 90
 	},
 	{
@@ -38,7 +38,7 @@
 	{
 		"id": 7,
 		"name": "Pompei",
-		"desc": "Ost, tomatsås, bacon, rödlök, ägg, currie",
+		"desc": "Ost, tomatsås, bacon, rödlök, ägg, curry",
 		"price": 90
 	},
 	{
