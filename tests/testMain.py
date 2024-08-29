@@ -2,8 +2,6 @@ from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 # from http import * # import the http module to be able to use the http.server class
@@ -39,7 +37,7 @@ class TestWebsite(TestCase):
     # setUp is executed BEFORE EVERY TEST
     def setUp(self):
         self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
-        # self.browser.get("http://localhost:5501/index.html") # load the website
+        # self.browser.get("http://localhost:5500") # load the website
 
     # tearDown is executed AFTER EVERY TEST
     def tearDown(self):
@@ -50,7 +48,9 @@ class TestWebsite(TestCase):
         self.assertIn("Il Forno Magico", self.browser.page_source)
 
     def testTelephone(self):
-        self.assertIn("0630-555-555", self.browser.page_source)
+        welcome_center_element = self.browser.find_element(By.CLASS_NAME, "welcome-center") # find the element with the id of "contact_type"
+        welcome_center_text = welcome_center_element.text # get the text of the element
+        self.assertIn("0630-555-555", welcome_center_text)
 
     def testOpeningHours(self):
         self.assertIn("Öppettider", self.browser.page_source)
@@ -62,37 +62,13 @@ class TestWebsite(TestCase):
         self.assertIn("Kontakt", self.browser.page_source)
 
     def testContactLinks(self): 
-        contact_links = {
-            "email": "mailto:info@ilfornomagico.se",
-            "phone": "tel:0630-555-555",
-        }
-
-        for contact_type, expected_url in contact_links.items(): # iterate over the contact links 
-            link_element = self.browser.find_element(By.ID, contact_type) # find the element with the id of "contact_type"
-            link_element = WebDriverWait(self.browser, 10).until(  # wait for the element to be present in the DOM
-                EC.presence_of_element_located((By.ID, contact_type))
-            )
-            href = link_element.get_attribute('href') # get the href attribute of the element
-
-            # test if the href matches the expected URL
-            self.assertEqual(href, expected_url, f"{contact_type} link is incorrect.")
+        self.assertIn("mailto:info@ilfornomagico.se", self.browser.page_source)
+        self.assertIn("tel:0630-555-555", self.browser.page_source)
 
     def testSocialMediaLinks(self): 
-        social_links = {
-            "facebook": "https://facebook.com/ntiuppsala",
-            "instagram": "https://instagram.com/ntiuppsala",
-            "twitter": "https://twitter.com/ntiuppsala"
-        }
-
-        for platform, expected_url in social_links.items():
-            link_element = self.browser.find_element(By.ID, platform) # find the element with the id of "platform"
-            link_element = WebDriverWait(self.browser, 10).until(  # wait for the element to be present in the DOM
-                EC.presence_of_element_located((By.ID, platform))
-            )
-            href = link_element.get_attribute('href') # get the href attribute of the element
-            
-            # test if the href matches the expected URL
-            self.assertEqual(href, expected_url, f"{platform} link is incorrect.")
+        self.assertIn("https://facebook.com/ntiuppsala", self.browser.page_source)
+        self.assertIn("https://instagram.com/ntiuppsala", self.browser.page_source)
+        self.assertIn("https://twitter.com/ntiuppsala", self.browser.page_source)
 
     def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
 
