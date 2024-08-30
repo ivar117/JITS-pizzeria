@@ -3,3 +3,4 @@ __pycache__/
 testScreenshots/
 node_modules/
 package-lock.json
+*.psd
