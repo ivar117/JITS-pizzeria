@@ -47,7 +47,7 @@ def screenshot_res(width, height, res_name):
     for img in bg_images: # iterate over the background images and take a screenshot of each
         scroll(html, img)
 
-        driver.save_screenshot("testScreenshots/" + res_name + " img " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+        driver.save_screenshot("testScreenshots/" + res_name + " img-"+ img.get_attribute("id") + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 def scroll(element, target):
     if type(target) == str:
