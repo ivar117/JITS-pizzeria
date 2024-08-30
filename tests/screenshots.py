@@ -26,7 +26,7 @@ driver = webdriver.Chrome(options=chr_options)
 driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
 # -------------------------------------------------------------------------------------------------------------------------
 
-def screenshot_res(width, height, res_name):
+def screenshot_res(width, height, res_name, save_path):
     
     driver.set_window_size(width, height) # set the window size to the desired resolution
 
@@ -35,19 +35,22 @@ def screenshot_res(width, height, res_name):
     scroll(html, "top") # scroll to top
 
     # save screenshot of the top of the page with the resolution in the filename
-    driver.save_screenshot("testScreenshots/" + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    # driver.save_screenshot("testScreenshots/" + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    driver.save_screenshot(save_path + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
     scroll(html, "bottom") # scroll to bottom
 
     # save screenshot of the bottom of the page with the resolution in the filename
-    driver.save_screenshot("testScreenshots/" + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    # driver.save_screenshot("testScreenshots/" + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+    driver.save_screenshot(save_path + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
     bg_images = driver.find_elements(By.CLASS_NAME, "background") # collect all elements with the class "background" in a list
 
     for img in bg_images: # iterate over the background images and take a screenshot of each
         scroll(html, img)
 
-        driver.save_screenshot("testScreenshots/" + res_name + " img-"+ img.get_attribute("id") + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+        # driver.save_screenshot("testScreenshots/" + res_name + " img-"+ img.get_attribute("id") + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
+        driver.save_screenshot(save_path + res_name + " img-"+ img.get_attribute("id") + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 def scroll(element, target):
     if type(target) == str:
@@ -68,15 +71,21 @@ def capture_screenshots(): # generates a screenshot of the start page in two res
     if os.path.isdir("testScreenshots") != True: # create a folder for the screenshots if it doesn't exist
         os.mkdir("testScreenshots")
 
-    screenshot_res(1920, 1080, "1080p")
-    screenshot_res(2560, 1440, "1440p")
+    sub_folder_name = datetime.utcnow().strftime('%Y-%m-%d-%H.%M.%S.%f')[:-3] # create a subfolder-name with the current time
+
+    save_path = "testScreenshots/" + sub_folder_name + "/" # set the save path to the subfolder
+
+    os.mkdir(save_path) # create the subfolder
+
+    screenshot_res(1920, 1080, "1080p", save_path) # test for checking desktop 1080p resolution
+    screenshot_res(2560, 1440, "1440p", save_path) # test for checking desktop 1440p resolution
 
     # tests for checking phone resolution
-    screenshot_res(375, 667, "iPhone-SE") # iPhone SE
-    screenshot_res(414, 896, "iPhone-XR") # iPhone XR
-    screenshot_res(390, 844, "iPhone-12-Pro") # iPhone 12 Pro
-    screenshot_res(430, 932, "iPhone-14-Pro-Max") # iPhone 14 Pro Max
-    screenshot_res(412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
-    screenshot_res(360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
+    screenshot_res(375, 667, "iPhone-SE", save_path) # iPhone SE
+    screenshot_res(414, 896, "iPhone-XR", save_path) # iPhone XR
+    screenshot_res(390, 844, "iPhone-12-Pro", save_path) # iPhone 12 Pro
+    screenshot_res(430, 932, "iPhone-14-Pro-Max", save_path) # iPhone 14 Pro Max
+    screenshot_res(412, 915, "Pixel-7-Samsung-S20-Ultra", save_path) # Pixel 7 / Samsung Galaxy S20 Ultra
+    screenshot_res(360, 740, "Samsung-Galaxy-S8+", save_path) # Samsung Galaxy S8+
 
 capture_screenshots()
