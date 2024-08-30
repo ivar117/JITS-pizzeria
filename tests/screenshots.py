@@ -35,13 +35,11 @@ def screenshot_res(width, height, res_name, save_path):
     scroll(html, "top") # scroll to top
 
     # save screenshot of the top of the page with the resolution in the filename
-    # driver.save_screenshot("testScreenshots/" + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
     driver.save_screenshot(save_path + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
     scroll(html, "bottom") # scroll to bottom
 
     # save screenshot of the bottom of the page with the resolution in the filename
-    # driver.save_screenshot("testScreenshots/" + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
     driver.save_screenshot(save_path + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
     bg_images = driver.find_elements(By.CLASS_NAME, "background") # collect all elements with the class "background" in a list
@@ -49,7 +47,6 @@ def screenshot_res(width, height, res_name, save_path):
     for img in bg_images: # iterate over the background images and take a screenshot of each
         scroll(html, img)
 
-        # driver.save_screenshot("testScreenshots/" + res_name + " img-"+ img.get_attribute("id") + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
         driver.save_screenshot(save_path + res_name + " img-"+ img.get_attribute("id") + " " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
 def scroll(element, target):
@@ -68,12 +65,12 @@ def scroll(element, target):
 
 def capture_screenshots(): # generates a screenshot of the start page in two resolutions
 
-    if os.path.isdir("testScreenshots") != True: # create a folder for the screenshots if it doesn't exist
-        os.mkdir("testScreenshots")
+    if os.path.isdir("generatedScreenshots") != True: # create a folder for the screenshots if it doesn't exist
+        os.mkdir("generatedScreenshots")
 
     sub_folder_name = datetime.utcnow().strftime('%Y-%m-%d-%H.%M.%S.%f')[:-3] # create a subfolder-name with the current time
 
-    save_path = "testScreenshots/" + sub_folder_name + "/" # set the save path to the subfolder
+    save_path = "generatedScreenshots/" + sub_folder_name + "/" # set the save path to the subfolder
 
     os.mkdir(save_path) # create the subfolder
 
