@@ -8,25 +8,23 @@ from datetime import datetime
 import time
 
 # settings for how the tests will be executed
-
 do_not_close_browser = False # if True, the browser will stay open after the tests are done, otherwise it will close
 hide_window = True # if True, the browser will not be shown while the tests are executed
 
-def set_up_browser():
-    chr_options = Options()
+# ---------------------------- This section of code starts the browser and loads the website ----------------------------
+chr_options = Options()
 
-    if do_not_close_browser:
-        chr_options.add_experimental_option("detach", True)
+if do_not_close_browser:
+    chr_options.add_experimental_option("detach", True)
 
-    if hide_window:
-        chr_options.add_argument("--headless")
+if hide_window:
+    chr_options.add_argument("--headless")
 
-    chr_options.add_argument("--disable-search-engine-choice-screen")
+chr_options.add_argument("--disable-search-engine-choice-screen")
 
-    driver = webdriver.Chrome(options=chr_options)
-    driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
-
-set_up_browser()
+driver = webdriver.Chrome(options=chr_options)
+driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
+# -------------------------------------------------------------------------------------------------------------------------
 
 def screenshot_res(width, height, res_name):
     
