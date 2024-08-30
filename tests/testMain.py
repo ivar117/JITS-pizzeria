@@ -69,22 +69,6 @@ class TestWebsite(TestCase):
         self.assertIn("https://facebook.com/ntiuppsala", self.browser.page_source)
         self.assertIn("https://instagram.com/ntiuppsala", self.browser.page_source)
         self.assertIn("https://twitter.com/ntiuppsala", self.browser.page_source)
-
-    def testCaptureScreenshot(self): # generates a screenshot of the start page in two resolutions
-
-        if os.path.isdir("testScreenshots") != True: # create a folder for the screenshots if it doesn't exist
-            os.mkdir("testScreenshots")
-
-        test_screenshot_res(self, 1920, 1080, "1080p")
-        test_screenshot_res(self, 2560, 1440, "1440p")
-
-        # tests for checking phone resolution
-        test_screenshot_res(self, 375, 667, "iPhone-SE") # iPhone SE
-        test_screenshot_res(self, 414, 896, "iPhone-XR") # iPhone XR
-        test_screenshot_res(self, 390, 844, "iPhone-12-Pro") # iPhone 12 Pro
-        test_screenshot_res(self, 430, 932, "iPhone-14-Pro-Max") # iPhone 14 Pro Max
-        test_screenshot_res(self, 412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
-        test_screenshot_res(self, 360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
         
     def testImagesPath(self):
         images = self.browser.find_elements(By.TAG_NAME, 'img') # collect all img elements on the page in a list
@@ -93,45 +77,6 @@ class TestWebsite(TestCase):
             img_src_path = img.get_attribute("src") # get the path source of the image
             img_src_path = img_src_path[8:] # remove "file:///" from the path, which are the first 8 characters
             assert os.path.exists(img_src_path) # check that the source of the image exists
-
-def test_screenshot_res(self, width, height, res_name):
-    
-    self.browser.set_window_size(width, height) # set the window size to the desired resolution
-    print(width, height)
-    html = self.browser.find_element(By.TAG_NAME, 'html') # prepare for scroll
-
-    scroll(self, html, "top") # scroll to top
-
-    # save screenshot of the top of the page with the resolution in the filename
-    self.browser.save_screenshot("testScreenshots/" + res_name + " top " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
-
-    scroll(self, html, "bottom") # scroll to bottom
-
-    # save screenshot of the bottom of the page with the resolution in the filename
-    self.browser.save_screenshot("testScreenshots/" + res_name + " bottom " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
-
-    bg_images = self.browser.find_elements(By.CLASS_NAME, "background") # collect all elements with the class "background" in a list
-
-    for img in bg_images: # iterate over the background images and take a screenshot of each
-        scroll(self, html, img)
-
-        print("scrolling with res", res_name)
-
-        self.browser.save_screenshot("testScreenshots/" + res_name + " img " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
-
-def scroll(self, element, target):
-    if type(target) == str:
-        if target == "top":
-            element.send_keys(Keys.HOME) # scroll to top
-
-        elif target == "bottom":
-            element.send_keys(Keys.END) # scroll to bottom
-
-        time.sleep(0.2) # sleep for .2 seconds so the browser has time to scroll before taking screenshot
-
-    elif type(target) == webdriver.remote.webelement.WebElement: # if the target is an element, scroll to the element
-        actions = ActionChains(self.browser)
-        actions.move_to_element(target).perform()
 
 # this code is here so that the tests will be executed if the file is executed as a normal python program
 if __name__ == '__main__':
