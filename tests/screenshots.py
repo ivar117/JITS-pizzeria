@@ -29,7 +29,7 @@ driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.ht
 def screenshot_res(width, height, res_name):
     
     driver.set_window_size(width, height) # set the window size to the desired resolution
-    print(width, height)
+
     html = driver.find_element(By.TAG_NAME, 'html') # prepare for scroll
 
     scroll(html, "top") # scroll to top
@@ -46,8 +46,6 @@ def screenshot_res(width, height, res_name):
 
     for img in bg_images: # iterate over the background images and take a screenshot of each
         scroll(html, img)
-
-        print("scrolling with res", res_name)
 
         driver.save_screenshot("testScreenshots/" + res_name + " img " + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png")
 
