@@ -27,7 +27,7 @@ driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.ht
 # -------------------------------------------------------------------------------------------------------------------------
 
 def save_screenshot(save_path, res_name, id): # function for shortening the code for saving screenshots
-    driver.save_screenshot(save_path + res_name + id  + datetime.utcnow().strftime('%Y-%m-%d %H.%M.%S.%f')[:-3] + ".png") 
+    driver.save_screenshot(save_path + res_name + id + "UTC" + datetime.utcnow().strftime('%Y-%m-%d-%H.%M.%S.%f')[:-3] + ".png") 
 
 def screenshot_res(width, height, res_name, save_path):
 
@@ -67,7 +67,7 @@ def capture_screenshots(): # generates a screenshot of the start page in two res
     if os.path.isdir("generatedScreenshots") != True: # create a folder for the screenshots if it doesn't exist
         os.mkdir("generatedScreenshots")
 
-    sub_folder_name = datetime.utcnow().strftime('%Y-%m-%d-%H.%M.%S.%f')[:-3] # create a subfolder-name with the current time
+    sub_folder_name = "UTC"+datetime.utcnow().strftime('%Y-%m-%d-%H.%M.%S.%f')[:-3] # create a subfolder-name with the current time
     save_path = "generatedScreenshots/" + sub_folder_name + "/" # set the save path to the subfolder
     os.mkdir(save_path) # create the subfolder
 
