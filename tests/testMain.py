@@ -4,10 +4,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-# from http import * # import the http module to be able to use the http.server class
+
 import os
 from datetime import datetime
 import time
+
 
 class TestWebsite(TestCase):
 
@@ -37,29 +38,34 @@ class TestWebsite(TestCase):
     # setUp is executed BEFORE EVERY TEST
     def setUp(self):
         self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
-        # self.browser.get("http://localhost:5500") # load the website
 
     # tearDown is executed AFTER EVERY TEST
     def tearDown(self):
         self.browser.get('about:blank')  # load a blank page to avoid previous tests affecting subsequent tests
 
     # THE TESTS START HERE
-    def testTitle(self):
-        self.assertIn("Il Forno Magico", self.browser.page_source)
+    def testWelcomeTitle(self):
+        welcome_center_element = self.browser.find_element(By.CLASS_NAME, "welcome-center") # find the element with the id of "welcome-center"
+        self.assertIn("Il Forno Magico", welcome_center_element.text)
 
-    def testTelephone(self):
-        welcome_center_element = self.browser.find_element(By.CLASS_NAME, "welcome-center") # find the element with the id of "contact_type"
-        welcome_center_text = welcome_center_element.text # get the text of the element
-        self.assertIn("0630-555-555", welcome_center_text)
+    def testWelcomeTelephone(self):
+        welcome_center_element = self.browser.find_element(By.CLASS_NAME, "welcome-center") # find the element with the id of "welcome-center"
+        self.assertIn("0630-555-555", welcome_center_element.text)
 
     def testOpeningHours(self):
-        self.assertIn("Öppettider", self.browser.page_source)
+        opening_hours_div = self.browser.find_element(By.ID, "opening-hours") # find the element with the class of "opening-hours"
+        compare_string = "Öppettider\nMån-Tor 10-22\nFredag 10-23\nLördag 12-23\nSöndag 12-20"
+        self.assertIn(compare_string, opening_hours_div.text)
 
     def testAddress(self):
-        self.assertIn("Adress", self.browser.page_source)
+        address_div = self.browser.find_element(By.ID, "address") # find the element with the class of "address"
+        compare_string = "Adress\nFjällgatan 32H\n981 39 KIRUNA"
+        self.assertIn(compare_string, address_div.text)
     
     def testContact(self):
-        self.assertIn("Kontakt", self.browser.page_source)
+        contact_div = self.browser.find_element(By.ID, "contact") # find the element with the class of "contact"
+        compare_string = "Kontakt\n0630-555-555\ninfo@ilfornomagico.se"
+        self.assertIn(compare_string, contact_div.text)
 
     def testContactLinks(self): 
         self.assertIn("mailto:info@ilfornomagico.se", self.browser.page_source)
