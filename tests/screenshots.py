@@ -12,20 +12,23 @@ import time
 do_not_close_browser = False # if True, the browser will stay open after the tests are done, otherwise it will close
 hide_window = True # if True, the browser will not be shown while the tests are executed
 
-chr_options = Options()
+def set_up_browser():
+    chr_options = Options()
 
-if do_not_close_browser:
-    chr_options.add_experimental_option("detach", True)
+    if do_not_close_browser:
+        chr_options.add_experimental_option("detach", True)
 
-if hide_window:
-    chr_options.add_argument("--headless")
+    if hide_window:
+        chr_options.add_argument("--headless")
 
-chr_options.add_argument("--disable-search-engine-choice-screen")
+    chr_options.add_argument("--disable-search-engine-choice-screen")
 
-driver = webdriver.Chrome(options=chr_options)
-driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
+    driver = webdriver.Chrome(options=chr_options)
+    driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
 
-def test_screenshot_res(width, height, res_name):
+set_up_browser()
+
+def screenshot_res(width, height, res_name):
     
     driver.set_window_size(width, height) # set the window size to the desired resolution
     print(width, height)
@@ -64,20 +67,20 @@ def scroll(element, target):
         actions = ActionChains(driver)
         actions.move_to_element(target).perform()
 
-def testCaptureScreenshot(): # generates a screenshot of the start page in two resolutions
+def capture_screenshots(): # generates a screenshot of the start page in two resolutions
 
     if os.path.isdir("testScreenshots") != True: # create a folder for the screenshots if it doesn't exist
         os.mkdir("testScreenshots")
 
-    test_screenshot_res(1920, 1080, "1080p")
-    test_screenshot_res(2560, 1440, "1440p")
+    screenshot_res(1920, 1080, "1080p")
+    screenshot_res(2560, 1440, "1440p")
 
     # tests for checking phone resolution
-    test_screenshot_res(375, 667, "iPhone-SE") # iPhone SE
-    test_screenshot_res(414, 896, "iPhone-XR") # iPhone XR
-    test_screenshot_res(390, 844, "iPhone-12-Pro") # iPhone 12 Pro
-    test_screenshot_res(430, 932, "iPhone-14-Pro-Max") # iPhone 14 Pro Max
-    test_screenshot_res(412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
-    test_screenshot_res(360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
+    screenshot_res(375, 667, "iPhone-SE") # iPhone SE
+    screenshot_res(414, 896, "iPhone-XR") # iPhone XR
+    screenshot_res(390, 844, "iPhone-12-Pro") # iPhone 12 Pro
+    screenshot_res(430, 932, "iPhone-14-Pro-Max") # iPhone 14 Pro Max
+    screenshot_res(412, 915, "Pixel-7-Samsung-S20-Ultra") # Pixel 7 / Samsung Galaxy S20 Ultra
+    screenshot_res(360, 740, "Samsung-Galaxy-S8+") # Samsung Galaxy S8+
 
-testCaptureScreenshot()
+capture_screenshots()
