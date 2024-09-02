@@ -143,12 +143,14 @@ footer {
    color: white;
    margin-top: 3vh;
    opacity: 1;
+   gap: 20px;
 }
 
 #social-media-container img { 
-    filter: invert(1);
-    margin-inline: 15px;
-    width: 50%;
+    filter: invert(100%);
+    stroke: white;
+    color: white;
+    width: 90%;
 }
 
 #footer-credit {
@@ -249,10 +251,6 @@ a.social-link:hover {
     .bubble {
         margin-left: 5%;
         margin-right: 5%;
-    }
-    #social-media-container img { 
-        margin-inline: 5px;
-        width: 60%;
     }
     #background-1 {
         width: 200%;
