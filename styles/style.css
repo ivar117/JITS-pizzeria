@@ -7,8 +7,8 @@
 :root {
     --footer-font-size: 0.45cm;
     --font-size-a: 6vmin;
-    --font-size-b: 3vmin;
-    --font-size-c: 1.5vmin;
+    --font-size-b: 5vmin;
+    --font-size-c: 2.5vmin;
     --font-size-d: 0.5vmin;
     --italianno-font-multiplier: 2;
     --main-color: #332310;
@@ -154,7 +154,6 @@ h1 {
 
 .pizza-name {
     font-size: calc(var(--font-size-c)*var(--italianno-font-multiplier));
-    /* font-size: var(--font-size-c); */
     font-style: normal;
     font-family: "italianno";
     margin: 0;
@@ -279,5 +278,17 @@ a.social-link:hover {
     #background-1 {
         width: 200%;
         height: auto;
+    }
+    .welcome-center p {
+        font-size: 150%;
+    }
+    .welcome-center {
+        width: 80%;
+        left: 45%;
+    }
+    .menu {
+        scale: 1.5;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
