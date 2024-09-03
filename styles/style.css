@@ -75,44 +75,6 @@ body {
     z-index: 1; 
 }
 
-.menu-items#right {
-    margin-top: 80px
-}
-
-.menu-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: calc(var(--title-font-size)/4) calc(var(--title-font-size)/2);
-    width: 18vw;
-}
-
-.menu-item .top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.menu-item .bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    font-style: italic;
-}
-
-.menu-item .name {
-    font-family: 'Italianno';
-    font-size: 180%;
-    font-weight: bold;
-}
-
 footer {
     display: flex;
     flex-direction: column;
@@ -198,9 +160,6 @@ a.social-link:hover {
 }
 
 @media (max-width: 1035px) {
-    .menu-item {
-        width: 25vw;
-    }
     .welcome-center p {
         font-size: 300%;
     }
@@ -209,22 +168,7 @@ a.social-link:hover {
     }
 }
 
-@media (max-width: 900px) {
-    #menu-items-container {
-        gap: 30px;
-        font-size: 90%;
-    }
-}
-
 @media (max-width: 740px) {
-    .menu-item {
-        width: 30vw;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .menu-items#right {
-        margin-top: 50px;
-    }
     .welcome-center p {
         font-size: 250%;
     }
@@ -233,25 +177,7 @@ a.social-link:hover {
     }
 }
 
-@media (max-width: 620px) {
-    #menu-items-container {
-        font-size: 65%;
-    }
-}
-
 @media (max-width: 500px) {
-    #menu-items-container {
-        font-size: 55%;
-    }
-    .menu-item {
-        margin-right: 20px;
-        margin-left: 20px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    .menu-items#right {
-        margin-top: 30px;
-    }
     .welcome-center p {
         font-size: 200%;
     }
@@ -289,33 +215,11 @@ a.social-link:hover {
         width: 200%;
         height: auto;
     }
-    #menu-items-container {
-        gap: 20px;
-        top: 50%;
-        font-size: 50%
-    }
-    .menu-item {
-        margin-right: 20px;
-        margin-left: 20px;
-        width: 30vw;
-    }
-    .menu-items#right {
-        margin-top: 20px;
-    }
     .welcome-center p {
         font-size: 150%;
     }
     .welcome-center {
         width: 80%;
         left: 45%;
-    }
-}
-@media (max-width: 350px) {
-    .menu-item {
-        width: 35vw;
-    }
-    #menu-items-container {
-        font-size: 45%;
-        gap: 0;
     }
 }
