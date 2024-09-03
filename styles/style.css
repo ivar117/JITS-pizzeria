@@ -71,7 +71,7 @@ h1 {
     font-size: 9.5vmin;
     /* font-size: 9.5vmin; */
     margin-bottom: 5px;
-    padding-right: calc(var(--title-font-size)/4);
+    padding-right: 15px;
 }
 
 .welcome-center p a {
@@ -86,10 +86,11 @@ h1 {
 
 #section-2 {
     display: flex;
-    width:100%;
+    width: 100%;
     position: relative;
     background-color: var(--main-color);
-    height: fit-content
+    height: fit-content;
+    box-shadow: 0px 0px 3vw 3px rgba(0, 0, 0, 1.5);
 }
 
 .left {
@@ -111,9 +112,11 @@ h1 {
 
 #menu{
     color: var(--main-text-color);
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     margin: 50px auto;
+    
 }
 
 #menu-items-container {
@@ -279,9 +282,22 @@ a.social-link:hover {
         width: 200%;
         height: auto;
     }
-    .menu {
-        scale: 1.5;
-        margin-left: 0;
-        margin-right: 0;
+    .menu-title {
+        font-size: calc(var(--font-size-b)*var(--italianno-font-multiplier)*1.5);
+    }
+    .price, .description {
+        font-size: calc(var(--font-size-c)*1.5);
+    }
+    .pizza-name {
+        font-size: calc(var(--font-size-c)*var(--italianno-font-multiplier)*1.5);
+    }
+    #menu-items-container{
+        padding: 0px 25px;
+    }
+    #menu {
+        margin: 25px auto;
+    }
+    .menu-border {
+        visibility: hidden;
     }
 }
