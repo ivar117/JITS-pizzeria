@@ -131,6 +131,32 @@ footer {
     font-size: var(--footer-font-size);
 }
 
+#opening-hours .align-container {
+   display: flex;
+   gap: 50px;
+   max-width: 180px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#opening-hours .align-container .left {
+    margin-right: auto;
+    text-align: left;
+}
+
+#opening-hours .align-container .right {
+    margin-right: left;
+    text-align: right;
+}
+
+#footer-info #address {
+    width: 20vw;
+}
+
+#footer-info #contact {
+    width: 20vw;
+}
+
 #footer-info a {
     color: white;
 }
@@ -243,6 +269,12 @@ a.social-link:hover {
     }
     .footer-content {
         margin: 2.5vh 0;
+    }
+    #footer-info #address {
+        width: auto;
+    }
+    #footer-info #contact {
+        width: auto;
     }
     .content {
         margin-left: 3vw;

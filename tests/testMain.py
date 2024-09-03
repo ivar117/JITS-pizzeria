@@ -54,7 +54,7 @@ class TestWebsite(TestCase):
 
     def testOpeningHours(self):
         opening_hours_div = self.browser.find_element(By.ID, "opening-hours") # find the element with the class of "opening-hours"
-        compare_string = "Öppettider\nMån-Tor 10-22\nFredag 10-23\nLördag 12-23\nSöndag 12-20"
+        compare_string = "Öppettider\nMån-Tor\nFredag\nLördag\nSöndag\n10-22\n10-23\n12-23\n12-20"
         self.assertIn(compare_string, opening_hours_div.text)
 
     def testAddress(self):
