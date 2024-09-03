@@ -11,14 +11,9 @@
     --main-text-color: #fff;
 }
 
-.bubble {
-    background: rgba(230, 203, 170, 0.8);
-    border-radius: 25px;
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
-}
-
 body {
     font-family: 'Montserrat';
+    font-weight: 100;
 }
 
 h1 {
@@ -41,20 +36,42 @@ h1 {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    width: fit-content;
-    height: fit-content;
-    padding: calc(var(--title-font-size)/4) calc(var(--title-font-size)/2);
-    margin-left: auto;
-    margin-right: auto;
+    background-color: var(--main-color);
+    color: var(--main-text-color);
+    padding: calc(var(--title-font-size)/4);
+    width: 105%;
+    height: 33vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 3vw 3px rgba(0, 0, 0, 1.5);
 }
 
 .welcome-center p {
-    font-weight: bold;
-    font-style: italic;
-    font-size: var(--title-font-size);
+    /* font-size: 1.5vw; */
+    font-size: 2.5vmin;
     text-align: center;
     line-height: 1.5;
+}
+
+.welcome-center .welcome {
+    /* font-size: 2.5vw; */
+    font-size: 4.5vmin;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.welcome-center .name {
+    font-family: 'Italianno';
+    font-size: 9.5vmin;
+    /* font-size: 9.5vmin; */
+    margin-bottom: 5px;
+    padding-right: calc(var(--title-font-size)/4);
+}
+
+.welcome-center p a {
+    text-decoration: none;
 }
 
 #section-1 {
@@ -192,33 +209,6 @@ a.social-link:hover {
     opacity: 0.5;
 }
 
-@media (max-width: 1035px) {
-    .welcome-center p {
-        font-size: 300%;
-    }
-    .welcome-center {
-        width: 80%;
-    }
-}
-
-@media (max-width: 740px) {
-    .welcome-center p {
-        font-size: 250%;
-    }
-    .welcome-center {
-        width: 80%;
-    }
-}
-
-@media (max-width: 500px) {
-    .welcome-center p {
-        font-size: 200%;
-    }
-    .welcome-center {
-        width: 90%;
-    }
-}
-
 @media (max-width: 430px) { /* Phone screen customization */
     :root {
         --footer-font-size: 0.5cm;
@@ -240,19 +230,8 @@ a.social-link:hover {
         margin-left: 3vw;
         padding: calc(var(--title-font-size)/4);
     }
-    .bubble {
-        margin-left: 5%;
-        margin-right: 5%;
-    }
     #background-1 {
         width: 200%;
         height: auto;
-    }
-    .welcome-center p {
-        font-size: 150%;
-    }
-    .welcome-center {
-        width: 80%;
-        left: 45%;
     }
 }
