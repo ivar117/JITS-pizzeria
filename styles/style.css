@@ -8,6 +8,7 @@
     --footer-font-size: 0.45cm;
     --title-font-size: 5vh;
     --main-color: #332310;
+    --main-text-color: #fff;
 }
 
 .bubble {
@@ -18,6 +19,16 @@
 
 body {
     font-family: 'Montserrat';
+}
+
+h1 {
+    font-family: 'Italianno';
+    font-size: var(--title-font-size);
+    font-weight: 100;
+    color: var(--main-text-color);
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 #background-1 {
@@ -56,23 +67,45 @@ body {
     display: flex;
     width:100%;
     position: relative;
+    background-color: var(--main-color);
+    height: fit-content
 }
 
-#background-2 {
+/* #background-2 {
     width: 100%;
     height: auto;
+} */
+
+.left {
+    align-items: left;
+    text-align: left;
+    float: left;
+}
+
+.right {
+    align-items: right;
+    text-align: right;
+    float: right;
+}
+
+#menu{
+    color: var(--main-text-color);
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* height: 150vh; */
 }
 
 #menu-items-container {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    width: fit-content;
+    /* align-items: left; */
     justify-content: center;
-    gap: 100px;
-    z-index: 1; 
 }
 
 footer {
