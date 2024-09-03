@@ -6,7 +6,11 @@
 
 :root {
     --footer-font-size: 0.45cm;
-    --title-font-size: 5vh;
+    --font-size-a: 6vmin;
+    --font-size-b: 3vmin;
+    --font-size-c: 1.5vmin;
+    --font-size-d: 0.5vmin;
+    --italianno-font-multiplier: 2;
     --main-color: #332310;
     --main-text-color: #fff;
 }
@@ -18,7 +22,7 @@ body {
 
 h1 {
     font-family: 'Italianno';
-    font-size: var(--title-font-size);
+    font-size: var(--font-size-a);
     font-weight: 100;
     color: var(--main-text-color);
     text-align: center;
@@ -88,11 +92,6 @@ h1 {
     height: fit-content
 }
 
-/* #background-2 {
-    width: 100%;
-    height: auto;
-} */
-
 .left {
     align-items: left;
     text-align: left;
@@ -105,24 +104,69 @@ h1 {
     float: right;
 }
 
+.menu-title{
+    font-size: calc(var(--font-size-b)*var(--italianno-font-multiplier));
+    padding-right: 3px;
+}
+
 #menu{
     color: var(--main-text-color);
-    /* display: inline-block; */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    /* height: 150vh; */
+    margin: 50px auto;
 }
 
 #menu-items-container {
+    --border: rgba(256, 256, 256, 0.5) solid 1px;
+    --border: rgba(0, 0, 0, 1) solid 3px;
+    position: relative;
     display: flex;
     flex-direction: column;
     width: fit-content;
-    /* align-items: left; */
-    justify-content: center;
+    gap: 1.5em;
+    padding: 0px 50px;
+}
+
+.menu-border{
+    --border: rgba(256, 256, 256, 0.5) solid 1px;
+    position: absolute;
+    top: 2%;
+    bottom: 3.5%;
+}
+
+.menu-border.left {
+    left: 0;
+    border-left: var(--border);
+}
+
+.menu-border.right {
+    right: 0;
+    border-left: var(--border);
+}
+
+.menu-item {
+    font-style: italic;
+}
+
+.menu-item p{
+    padding-right: 2px;
+}
+
+.pizza-name {
+    font-size: calc(var(--font-size-c)*var(--italianno-font-multiplier));
+    /* font-size: var(--font-size-c); */
+    font-style: normal;
+    font-family: "italianno";
+    margin: 0;
+    padding: 0;
+}
+
+.price, .description {
+    font-size: var(--font-size-c);
+}
+
+.top .right {
+    margin-top: calc(var(--font-size-c)/2);
 }
 
 footer {
@@ -214,7 +258,7 @@ a.social-link:hover {
 @media (max-width: 430px) { /* Phone screen customization */
     :root {
         --footer-font-size: 0.5cm;
-        --title-font-size: 7vw;
+        --font-size-a: 7vw;
     }
     #footer-info {
         flex-direction: column;
