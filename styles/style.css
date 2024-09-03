@@ -199,6 +199,8 @@ footer {
 a {
     opacity: 1;
     transition: opacity 0.4s;
+    color: var(--main-text-color);
+    font-weight: 400;
 }
 
 a:hover {
