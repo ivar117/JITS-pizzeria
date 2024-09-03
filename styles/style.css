@@ -279,13 +279,6 @@ a.social-link:hover {
         width: 200%;
         height: auto;
     }
-    .welcome-center p {
-        font-size: 150%;
-    }
-    .welcome-center {
-        width: 80%;
-        left: 45%;
-    }
     .menu {
         scale: 1.5;
         margin-left: 0;
