@@ -190,6 +190,10 @@ footer {
     font-size: var(--footer-font-size);
 }
 
+strong {
+    font-weight: 500;
+}
+
 #opening-hours .align-container {
    display: flex;
    gap: 50px;
@@ -246,7 +250,6 @@ a {
     opacity: 1;
     transition: opacity 0.4s;
     color: var(--main-text-color);
-    font-weight: 400;
 }
 
 a:hover {
