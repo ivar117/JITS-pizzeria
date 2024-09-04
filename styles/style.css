@@ -50,18 +50,16 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-shadow: 0px 0px 3vw 3px rgba(0, 0, 0, 1.5);
+    box-shadow: 0px 0px 3vw 3px rgba(0, 0, 0, 1);
 }
 
 .welcome-center p {
-    /* font-size: 1.5vw; */
     font-size: 2.5vmin;
     text-align: center;
     line-height: 1.5;
 }
 
 .welcome-center .welcome {
-    /* font-size: 2.5vw; */
     font-size: 4.5vmin;
     text-align: center;
     line-height: 1.5;
@@ -91,17 +89,15 @@ h1 {
     position: relative;
     background-color: var(--main-color);
     height: fit-content;
-    box-shadow: 0px 0px 3vw 3px rgba(0, 0, 0, 1.5);
+    box-shadow: 0px 0px 3vw 3px rgba(0, 0, 0, 1);
 }
 
 .left {
-    align-items: left;
     text-align: left;
     float: left;
 }
 
 .right {
-    align-items: right;
     text-align: right;
     float: right;
 }
@@ -121,7 +117,7 @@ h1 {
 }
 
 #menu-items-container {
-    --border: rgba(256, 256, 256, 0.5) solid 1px;
+    --border: rgba(255, 255, 255, 0.5) solid 1px;
     --border: rgba(0, 0, 0, 1) solid 3px;
     position: relative;
     display: flex;
@@ -132,7 +128,7 @@ h1 {
 }
 
 .menu-border{
-    --border: rgba(256, 256, 256, 0.5) solid 1px;
+    --border: rgba(255, 255, 255, 0.5) solid 1px;
     position: absolute;
     top: 2%;
     bottom: 3.5%;
@@ -211,7 +207,7 @@ strong {
 }
 
 #opening-hours .align-container .right {
-    margin-right: left;
+    margin-right: auto;
     text-align: right;
 }
 
