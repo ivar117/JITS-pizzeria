@@ -241,6 +241,10 @@ strong {
     width: 90%;
 }
 
+#x {
+    scale: 90%;
+}
+
 a {
     opacity: 1;
     transition: opacity 0.4s;
