@@ -74,7 +74,7 @@ class TestWebsite(TestCase):
     def testSocialMediaLinks(self): 
         self.assertIn("https://facebook.com/ntiuppsala", self.browser.page_source)
         self.assertIn("https://instagram.com/ntiuppsala", self.browser.page_source)
-        self.assertIn("https://twitter.com/ntiuppsala", self.browser.page_source)
+        self.assertIn("https://x.com/ntiuppsala", self.browser.page_source)
         
     def testImagesPath(self):
         images = self.browser.find_elements(By.TAG_NAME, 'img') # collect all img elements on the page in a list
