@@ -92,6 +92,10 @@ def screenshot_mobile_res(res_name, save_path):
     # save screenshot of the bottom of the page with the resolution in the filename
     save_screenshot(driver, save_path, res_name, " bottom ")
 
+    menu = driver.find_element(By.ID, "menu") # find the element with the id of "menu"
+    scroll(driver, html, menu) # scroll to the menu
+    save_screenshot(driver, save_path, res_name, " menu ")
+
     bg_images = driver.find_elements(By.CLASS_NAME, "background") # collect all elements with the class "background" in a list
     for img in bg_images: # iterate over the background images and take a screenshot of each
         scroll(driver, html, img) # scroll to the image
