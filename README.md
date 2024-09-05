@@ -27,3 +27,13 @@ To get started with our testing system, follow these instructions:
 
 1. Run "screenshots.py"
 2. The screenshots will be saved in "/generatedScreenshots/"
+
+## Deploy GitHub Page
+
+1. Open a browser
+2. Search for and log in to GitHub
+3. Open the repository (e.g., “JITS-pizzeria”)
+4. In the repository, navigate to “Settings”
+5. Under “Code and automation”, go to “Pages”
+6. Under “Build and deployment”, under “Source”, select “Deploy from a branch”
+7. Under “Branch”, choose “Main” on the left and “/ (root)” on the right. Click “Save”.
