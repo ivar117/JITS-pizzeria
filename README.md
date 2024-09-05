@@ -82,8 +82,8 @@ Open a new command prompt locally on your computer:
 * Close your command prompt and open a new windows powershell locally on your computer and enter the following:
 * `ssh-keygen`
 * Follow the prompts
-    * Press enter when prompted to enter a file a 
-    * Passphrase is an optional password that adds extra security
+    * Press enter when prompted to enter a file.
+    * Passphrase is an optional password that adds extra security.
 * `cat ~/.ssh/id_rsa.pub | ssh <username>@37.123.128.130 -p 30234 "cat >> ~/.ssh/authorized_keys"`
 
 Log into your user by entering:
@@ -94,18 +94,19 @@ Check if you can create and remove a file by entering:
 * `touch file1`
 * `rm file1`
 
-Type the following to be able to execute git commands
+Type the following to be able to execute git commands:
 * `git config --global --add safe.directory /var/www/html`
 
-Type the following to check that everything works
+Type the following to check that everything works:
 * `cd /var/www/html`
 * `git log`
 
 ## Change shell to bash
 
-Bash lets you see which user you are logged into
+By default the login shell will be set to sh.
+Bash comes with a lot of features and lets you see which user you are logged into.
 
-Enter the following when logged in as your user
+Enter the following when logged in as your user.
 * `bash` 
 * `chsh`
 * Enter your password
