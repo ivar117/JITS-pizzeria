@@ -46,6 +46,8 @@ All used fonts are defined in "/styles/fonts.css". Fontfiles should be placed in
 
 In a command prompt, enter:
 * “ssh root@37.123.128.130 -p 30234”
+* "yes" when prompted about connecting
+* enter password
 * “cd /var/www/html”
 
 If there is nothing in the folder:
