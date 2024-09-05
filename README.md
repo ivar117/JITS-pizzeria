@@ -42,7 +42,7 @@ To get started with our testing system, follow these instructions:
 
 All used fonts are defined in "/styles/fonts.css". Fontfiles should be placed in "/styles/"
 
-## Hosting system, how to access
+## How to access hosting system
 
 In a command prompt, enter:
 * `ssh root@37.123.128.130 -p 30234`
@@ -73,45 +73,40 @@ When logged in as root, enter:
 * `passwd <username>`
 * Enter desired password when prompted
 * Re-enter desired password when prompted
+* `usermod -aG wheel <username>`
 
 Open a new command prompt locally on your computer:
 * `ssh <username>@37.123.128.130 -p 30234`
 * Enter password when prompted
 * `mkdir .ssh`
-* Open windows powershell locally on your computer and enter the following:
+* Close your command prompt and open a new windows powershell locally on your computer and enter the following:
 * `ssh-keygen`
-* Follow the prompts, a passphrase adds extra security but is not necessary
+* Follow the prompts
+    * Press enter when prompted to enter a file a 
+    * Passphrase is an optional password that adds extra security
 * `cat ~/.ssh/id_rsa.pub | ssh <username>@37.123.128.130 -p 30234 "cat >> ~/.ssh/authorized_keys"`
-* `ssh root@37.123.128.130 -p 30234`
-* Enter the root password.
-* `usermod -aG :wheel <username>`
 
-Ensure that the contents of the directory belong to wheel by running
-* `ls /var/www/html -al`
+Log into your user by entering:
+* `ssh <username>@37.123.128.130 -p 30234`
+* Enter your password.
 
-Output should be:
-```
-drwxr-xr-x 6 root wheel 4096 Sep  5 07:21 .
-drwxr-xr-x 3 root root  4096 Sep  4 09:38 ..
-drwxr-xr-x 8 root wheel 4096 Sep  5 08:30 .git
--rw-r--r-- 1 root wheel   81 Sep  5 07:21 .gitignore
--rw-r--r-- 1 root wheel  945 Sep  5 07:21 README.md
-drwxr-xr-x 3 root wheel 4096 Sep  5 07:21 images
--rw-r--r-- 1 root wheel 6799 Sep  5 07:21 index.html
--rw-r--r-- 1 root wheel   58 Sep  5 07:21 package.json
--rw-r--r-- 1 root wheel  767 Sep  5 07:21 products.json
-drwxr-xr-x 2 root wheel 4096 Sep  5 07:21 styles
-drwxr-xr-x 2 root wheel 4096 Sep  5 07:21 tests
-```
+Check if you can create and remove a file by entering:
+* `touch file1`
+* `rm file1`
 
 Type the following to be able to execute git commands
 * `git config --global --add safe.directory /var/www/html`
 
 Type the following to check that everything works
+* `cd /var/www/html`
 * `git log`
 
-## Create a new group and give it permissions to edit /var/www/html
+## Change shell to bash
 
-* `groupadd wheel`
-* `chown -R :wheel /var/www/html`
-* `chmod -R 775 /var/www/html`
+Bash lets you see which user you are logged into
+
+Enter the following when logged in as your user
+* `bash` 
+* `chsh`
+* Enter your password
+* Enter "/bin/bash"
