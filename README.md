@@ -46,7 +46,7 @@ All used fonts are defined in "/styles/fonts.css". Fontfiles should be placed in
 
 In a command prompt, enter:
 * “ssh root@37.123.128.130 -p 30234”
-* “cd var/www/html”
+* “cd /var/www/html”
 
 If there is nothing in the folder:
 * “git clone https://github.com/NTIG-Uppsala/JITS-pizzeria .”
