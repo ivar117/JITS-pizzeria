@@ -58,6 +58,17 @@ If there is a problem, check that nginx and git are installed:
 
 ## Publish a new version of the website:
 
+Access the hosting system
+
 In the hosting system's var/www/html directory, type:
 * “git fetch”
 * “git checkout {tag}” *tag is the name of the new version that you have named in your git repository (to be named according to semantic versioning)
+
+## Add public key
+
+In root, enter:
+
+* "useradd -m (name)"
+* "passwd (name)"
+* "(new password)" when prompted
+* "(new password)" when prompted to retype
