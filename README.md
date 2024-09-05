@@ -45,30 +45,73 @@ All used fonts are defined in "/styles/fonts.css". Fontfiles should be placed in
 ## Hosting system, how to access
 
 In a command prompt, enter:
-* “ssh root@37.123.128.130 -p 30234”
-* "yes" when prompted about connecting
-* enter password
-* “cd /var/www/html”
+* `ssh root@37.123.128.130 -p 30234`
+* `yes` when prompted about connecting
+* `<root password>`
+* `cd /var/www/html`
 
 If there is nothing in the folder:
-* “git clone https://github.com/NTIG-Uppsala/JITS-pizzeria .”
+* `git clone https://github.com/NTIG-Uppsala/JITS-pizzeria .`
+* `git checkout <tag>` *tag is the name of the latest release in the git repository
 
 If there is a problem, check that nginx and git are installed:
-* “apt install nginx git”
+* `apt install nginx git`
 
 ## Publish a new version of the website:
 
 Access the hosting system
 
 In the hosting system's var/www/html directory, type:
-* “git fetch”
-* “git checkout {tag}” *tag is the name of the new version that you have named in your git repository (to be named according to semantic versioning)
+* `git fetch`
+* `git checkout <tag>` *tag is the name of the new version that you have named in your git repository (to be named according to semantic versioning)
 
-## Add public key
+## Add user and add ssh public key for user
 
-In root, enter:
+When logged in as root, enter:
 
-* "useradd -m (name)"
-* "passwd (name)"
-* "(new password)" when prompted
-* "(new password)" when prompted to retype
+* `useradd -m <username>`
+* `passwd <username>`
+* Enter desired password when prompted
+* Re-enter desired password when prompted
+
+Open a new command prompt locally on your computer:
+* `ssh <username>@37.123.128.130 -p 30234`
+* Enter password when prompted
+* `mkdir .ssh`
+* Open windows powershell locally on your computer and enter the following:
+* `ssh-keygen`
+* Follow the prompts, a passphrase adds extra security but is not necessary
+* `cat ~/.ssh/id_rsa.pub | ssh <username>@37.123.128.130 -p 30234 "cat >> ~/.ssh/authorized_keys"`
+* `ssh root@37.123.128.130 -p 30234`
+* Enter the root password.
+* `usermod -aG :wheel <username>`
+
+Ensure that the contents of the directory belong to wheel by running
+* `ls /var/www/html -al`
+
+Output should be:
+```
+drwxr-xr-x 6 root wheel 4096 Sep  5 07:21 .
+drwxr-xr-x 3 root root  4096 Sep  4 09:38 ..
+drwxr-xr-x 8 root wheel 4096 Sep  5 08:30 .git
+-rw-r--r-- 1 root wheel   81 Sep  5 07:21 .gitignore
+-rw-r--r-- 1 root wheel  945 Sep  5 07:21 README.md
+drwxr-xr-x 3 root wheel 4096 Sep  5 07:21 images
+-rw-r--r-- 1 root wheel 6799 Sep  5 07:21 index.html
+-rw-r--r-- 1 root wheel   58 Sep  5 07:21 package.json
+-rw-r--r-- 1 root wheel  767 Sep  5 07:21 products.json
+drwxr-xr-x 2 root wheel 4096 Sep  5 07:21 styles
+drwxr-xr-x 2 root wheel 4096 Sep  5 07:21 tests
+```
+
+Type the following to be able to execute git commands
+* `git config --global --add safe.directory /var/www/html`
+
+Type the following to check that everything works
+* `git log`
+
+## Create a new group and give it permissions to edit /var/www/html
+
+* `groupadd wheel`
+* `chown -R :wheel /var/www/html`
+* `chmod -R 775 /var/www/html`
