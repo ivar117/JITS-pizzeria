@@ -1,12 +1,12 @@
 :root {
-    --main-color: #332310; /*#460000*/ /*#8a110b*/ /*#332310*/
+    --main-color: #400; /*#460000*/ /*#8a110b*/ /*#332310*/
 
     --main-text-color: #fff;
     --bs-font-sans-serif: 'Montserrat';
     --bs-body-font-family: var(--bs-font-sans-serif);
     --bs-body-font-weight: 100;
     --bs-body-bg: var(--main-color);
-    --bs-body-bg-rgb: 51, 35, 16; /*51, 35, 16*/ /*68, 0, 0*/ /*64, 9, 7*/
+    --bs-body-bg-rgb: 68, 0, 0; /*51, 35, 16*/ /*68, 0, 0*/ /*64, 9, 7*/
     --bs-body-color: var(--main-text-color);
     --bs-secondary-bg: var(--main-color);
     --bs-secondary-color: var(--main-text-color);
