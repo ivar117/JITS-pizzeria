@@ -9,6 +9,11 @@
     --bs-secondary-color: var(--main-text-color);
     --bs-link-color-rgb: var(--main-text-color);
     --bs-link-hover-color-rgb: 255, 255, 255;
+    --bs-body-font-size: 1.0rem;
+}
+
+html {
+    font-size: 25px;
 }
 
 .italianno {
