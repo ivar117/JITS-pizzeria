@@ -85,6 +85,10 @@ def scroll_and_snap(driver, save_path, res_name):
     scroll(driver, html, menu) # scroll to the menu
     save_screenshot(driver, save_path, res_name, " menu ")
 
+    menu_title = driver.find_element(By.ID, "menu-title") # find the element with the id "menu-title"
+    scroll(driver, html, menu_title) # scroll to the top of the menu
+    save_screenshot(driver, save_path, res_name, " menu title ")
+
     welcome_center = driver.find_element(By.ID, "welcome-center") # find the element with the id of "welcome-center"
     scroll(driver, html, welcome_center) # scroll to the welcome message
     save_screenshot(driver, save_path, res_name, " welcome-center ")
