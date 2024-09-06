@@ -38,7 +38,7 @@ def initial_screenshot_gen():
 def initial_desktop_screenshots(save_path): # generates a screenshot of the start page in two resolutions
 
     driver = webdriver.Chrome(options=chr_options) # start the browser with the options
-    driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html')) # load the website
+    driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'bootstrap.html')) # load the website
 
     desktop_resize_and_capture(driver, 1920, 1080, "1080p", save_path) # test for checking desktop 1080p resolution
     desktop_resize_and_capture(driver, 2560, 1440, "1440p", save_path) # test for checking desktop 1440p resolution
@@ -64,7 +64,7 @@ def mobile_resize_and_capture(res_name, save_path):
     chr_options.add_experimental_option("mobileEmulation", mobile_emulation) # set the mobile emulation option to the desired resolution
 
     driver = webdriver.Chrome(options=chr_options) # start the browser with the options
-    driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html')) # load the website
+    driver.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'bootstrap.html')) # load the website
 
     scroll_and_snap(driver, save_path, res_name) # scroll and take screenshots
 
@@ -84,6 +84,10 @@ def scroll_and_snap(driver, save_path, res_name):
     menu = driver.find_element(By.ID, "menu") # find the element with the id of "menu"
     scroll(driver, html, menu) # scroll to the menu
     save_screenshot(driver, save_path, res_name, " menu ")
+
+    welcome_center = driver.find_element(By.ID, "welcome-center") # find the element with the id of "welcome-center"
+    scroll(driver, html, welcome_center) # scroll to the welcome message
+    save_screenshot(driver, save_path, res_name, " welcome-center ")
 
     bg_images = driver.find_elements(By.CLASS_NAME, "background") # collect all elements with the class "background" in a list
     for img in bg_images: # iterate over the background images and take a screenshot of each
