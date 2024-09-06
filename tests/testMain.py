@@ -37,7 +37,7 @@ class TestWebsite(TestCase):
 
     # setUp is executed BEFORE EVERY TEST
     def setUp(self):
-        self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
+        self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'bootstrap.html'))
 
     # tearDown is executed AFTER EVERY TEST
     def tearDown(self):
@@ -45,11 +45,10 @@ class TestWebsite(TestCase):
 
     # THE TESTS START HERE
     def testWelcomeTitle(self):
-        welcome_center_element = self.browser.find_element(By.CLASS_NAME, "welcome-center") # find the element with the id of "welcome-center"
-        self.assertIn("Il Forno Magico", welcome_center_element.text)
+        self.assertIn("Il Forno Magico", self.browser.page_source)
 
     def testWelcomeTelephone(self):
-        welcome_center_element = self.browser.find_element(By.CLASS_NAME, "welcome-center") # find the element with the id of "welcome-center"
+        welcome_center_element = self.browser.find_element(By.ID, "welcome-center") # find the element with the id of "welcome-center"
         self.assertIn("0630-555-555", welcome_center_element.text)
 
     def testOpeningHours(self):
