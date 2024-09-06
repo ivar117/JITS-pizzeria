@@ -5,11 +5,14 @@
     --bs-body-font-family: var(--bs-font-sans-serif);
     --bs-body-font-weight: 100;
     --bs-body-bg: var(--main-color);
+    --bs-body-bg-rgb: 51, 35, 16;
     --bs-body-color: var(--main-text-color);
+    --bs-secondary-bg: var(--main-color);
     --bs-secondary-color: var(--main-text-color);
     --bs-link-color-rgb: var(--main-text-color);
     --bs-link-hover-color-rgb: 255, 255, 255;
     --bs-body-font-size: 1.0rem;
+    --bs-box-shadow: 0 0 2rem rgba(0, 0, 0, 1);
 }
 
 html {
@@ -33,3 +36,9 @@ footer {
         background-position: left -17vh bottom 0;
     }
 }
+
+/* @media (max-width: 1200px) {
+    :root {
+        --bs-body-font-size: calc(0.5rem + 0.5vw);
+    }
+} */
