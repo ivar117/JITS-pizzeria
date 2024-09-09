@@ -5,3 +5,7 @@
 .bottom-7 {
     bottom: 7% !important;
 }
+
+.opacity-75-hover:hover {
+    opacity: 0.75;
+}
