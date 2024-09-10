@@ -34,6 +34,12 @@ footer {
     font-size: 80%;
 }
 
+.custom-img {
+    width: 60vmin;
+    object-fit: cover; /* Ensures the image covers the specified dimensions */
+    box-shadow: var(--bs-box-shadow);
+}
+
 @media (max-width: 768px) {
     .bg {
         background-position: left -17vh bottom 0;
@@ -43,5 +49,8 @@ footer {
 @media (max-width: 1920px) {
     html {
         font-size: 20px;
+    }
+    .custom-img {
+        width: 70vmin;
     }
 }
