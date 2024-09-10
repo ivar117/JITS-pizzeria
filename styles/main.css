@@ -34,9 +34,8 @@ footer {
     font-size: 80%;
 }
 
-.custom-img {
+.carousel-img {
     width: 60vmin;
-    object-fit: cover; /* Ensures the image covers the specified dimensions */
     box-shadow: var(--bs-box-shadow);
 }
 
@@ -50,7 +49,7 @@ footer {
     html {
         font-size: 20px;
     }
-    .custom-img {
+    .carousel-img {
         width: 70vmin;
     }
 }
