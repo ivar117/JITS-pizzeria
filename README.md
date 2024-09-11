@@ -10,6 +10,7 @@ A website for a pizza restaurant named "Il Forno Magico".
     * Selenium v.4.23.1 (needed for the [testing system](#installation-of-testing-system))
 
 * nodejs v.20.17.0 (needed for the [TypeScript system](#installation-of-typescript-system))
+* Bootstrap v5.3.3
 
 
 ## Installation of testing system
