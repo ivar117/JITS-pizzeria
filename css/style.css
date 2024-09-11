@@ -39,6 +39,18 @@ footer {
     box-shadow: var(--bs-box-shadow);
 }
 
+.top-2 {
+    top: 2% !important;
+}
+
+.bottom-7 {
+    bottom: 7% !important;
+}
+
+.opacity-75-hover:hover {
+    opacity: 0.75;
+}
+
 @media (max-width: 768px) {
     .bg {
         background-position: left -17vh bottom 0;
