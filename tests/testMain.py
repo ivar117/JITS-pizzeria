@@ -37,7 +37,7 @@ class TestWebsite(TestCase):
 
     # setUp is executed BEFORE EVERY TEST
     def setUp(self):
-        self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'bootstrap.html'))
+        self.browser.get(os.path.join(os.path.dirname(os.getcwd()), "JITS-pizzeria", 'index.html'))
 
     # tearDown is executed AFTER EVERY TEST
     def tearDown(self):
